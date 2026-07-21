@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- ✏ CAMBIAR: Título de la pestaña del navegador -->
+    <title>HAPS Deshidratados | Frutas y Verduras Deshidratadas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FUENTE: Poppins desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ICONOS: Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- 🔗 HOJA DE ESTILOS: Asegúrate que el archivo se llame "style.css" -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- ====================================================
+     HEADER — Barra de navegación superior con Hamburguesa
+==================================================== -->
+<header id="header">
+    <div class="container nav-container">
+
+        <!-- LOGO + NOMBRE DE MARCA -->
+        <div class="brand">
+            <div class="logo">
+                <img src="imagen/logo.jpeg" alt="HAPS Logo">
+            </div>
+            <div class="logo-text">
+                HAPS <span class="highlight">DESHIDRATADOS</span>
+            </div>
+        </div>
+
+        <!-- BOTÓN HAMBURGUESA (Visible solo en móviles) -->
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="index.html#productos">Productos</a></li>
+                <li><a href="index.html#proceso">Proceso</a></li>
+                <li><a href="index.html#video">Video</a></li>
+                <li><a href="index.html#contacto-haps">Contacto</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        
+        // Cambiar el ícono de barras (fa-bars) a una equis (fa-xmark) opcionalmente
+        const icon = mobileMenu.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Cerrar el menú automáticamente al hacer clic en cualquier enlace (ideal para móviles)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
+</script>
+
+<!-- ====================================================
+     HERO — Sección principal con video de fondo
+==================================================== -->
+<section id="inicio" class="hero">
+
+    <!-- 🔁 CAMBIAR: Reemplaza "prueba2.mp4" por el nombre real de tu video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="video/prueba2.mp4" type="video/mp4">
+    </video>
+
+    </div>
+</section>
+
+
+<!-- ====================================================
+     PRODUCTOS — Catálogo de productos con galería
+==================================================== -->
+<section id="productos" class="section">
+    <div class="container">
+
+        <!-- ✏ CAMBIAR: Título de la sección de productos -->
+        <h2 class="section-title">Nuestros Productos</h2>
+
+        <!-- ✏ CAMBIAR: Descripción debajo del título -->
+        <p class="section-subtitle">
+            Frutas y verduras seleccionadas y deshidratadas cuidadosamente.
+        </p>
+
+        <!-- FILA 1: Primeros 3 productos -->
+        <div class="gallery-grid">
+
+            <!-- 🔁 PRODUCTO 1: Tomate -->
+            <div class="gallery-item">
+                <img src="imagen/tomate.jpeg" alt="Tomate deshidratado">
+                <div class="overlay">
+                    <h4>Tomate Deshidratado</h4>
+                    <p>Tomate deshidratado: más sabor, más nutrientes y mayor duración en un solo ingrediente. 🍅✨</p>
+                </div>
+            </div>
+
+            <!-- 🔁 PRODUCTO 2: Mix de fruta -->
+            <div class="gallery-item">
+                <img src="imagen/mix de fruta.jpeg" alt="Mix de fruta deshidratada">
+                <div class="overlay">
+                    <h4>Mix de Fruta Deshidratado</h4>
+                    <p>Salpicón deshidratado: el sabor natural de la fruta, práctico y listo para disfrutar en cualquier momento. 🍍🍎✨</p>
+                </div>
+            </div>
+
+            <!-- 🔁 PRODUCTO 3: Piña -->
+            <div class="gallery-item">
+                <img src="imagen/piña.jpeg" alt="Piña deshidratada">
+                <div class="overlay">
+                    <h4>Piña Deshidratada</h4>
+                    <p>Piña: dulzura natural y energía tropical en cada bocado. 🍍✨</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- FIN gallery-grid -->
+
+        <!-- FILA 2: Productos adicionales -->
+        <!-- ⚠ FIX: Esta segunda fila estaba fuera del <div class="container">, ahora correctamente dentro -->
+        <div class="gallery-grid">
+
+            <!-- 🔁 PRODUCTO 4: Papaya -->
+            <div class="gallery-item">
+                <img src="imagen/papaya.jpeg" alt="Papaya deshidratada">
+                <div class="overlay">
+                    <h4>Papaya Deshidratada</h4>
+                    <p>Papaya deshidratada: dulzura natural, sabor tropical y energía en cada bocado. 🧡✨</p>
+                </div>
+            </div>
+
+            <!-- 🔁 PRODUCTO 5: Mango -->
+            <div class="gallery-item">
+                <img src="imagen/mango.jpeg" alt="Mango deshidratado">
+                <div class="overlay">
+                    <h4>Mango Deshidratado</h4>
+                    <p>Mango deshidratado: tropical, dulce y perfecto para un snack saludable. 🥭🌞</p>
+                </div>
+            </div>
+
+            <!-- 🔁 PRODUCTO 6: Cebolla — CAMBIAR imagen "producto6.jpg" por la real -->
+            <div class="gallery-item">
+                <img src="imagen/cebolla.png" alt="Cebolla deshidratada">
+                <div class="overlay">
+                    <h4>Cebolla Deshidratada</h4>
+                    <p>Cebolla deshidratada: sabor intenso y practicidad en cada uso. 🧅✨</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- FIN segunda gallery-grid -->
+
+    </div>
+</section>
+<!-- FIN sección PRODUCTOS -->
+
+
+<!-- ====================================================
+     PROCESO — Pasos del proceso de deshidratación
+==================================================== -->
+<section id="proceso" class="proceso">
+
+    <!-- ✏ CAMBIAR: Título de la sección -->
+    <h2>Nuestro Proceso</h2>
+
+    <div class="proceso-container">
+
+        <!-- 🔁 PASO 1: Reemplaza "proseso1.jpg" por tu imagen real -->
+        <!-- ⚠ NOTA: "proseso" está con falta ortográfica en los archivos originales, revisa tus nombres de archivo -->
+        <div class="card">
+            <img src="imagen/proseso1.jpg" alt="Selección de fruta">
+            <h3>Selección</h3>
+            <p>Elegimos fruta fresca de alta calidad.</p>
+        </div>
+
+        <!-- 🔁 PASO 2: Reemplaza "proseso2.jpeg" por tu imagen real -->
+        <div class="card">
+            <img src="imagen/proseso2.jpeg" alt="Deshidratación controlada">
+            <h3>Deshidratación Controlada</h3>
+            <p>Proceso técnico que conserva nutrientes y sabor.</p>
+        </div>
+
+        <!-- 🔁 PASO 3: Reemplaza "proseso3.jpg" por tu imagen real -->
+        <div class="card">
+            <img src="imagen/proseso3.jpg" alt="Empaque seguro">
+            <h3>Empaque Seguro</h3>
+            <p>Sellado hermético que mantiene frescura y duración.</p>
+        </div>
+
+    </div>
+</section>
+<!-- FIN sección PROCESO -->
+
+
+<!-- ====================================================
+     VIDEO — Video embebido de YouTube
+==================================================== -->
+<section id="video" class="section video-section">
+    <div class="container">
+
+        <!-- ✏ CAMBIAR: Título de la sección de video -->
+        <h2 class="section-title">Conoce Nuestro Proceso</h2>
+
+        <div class="video-wrapper">
+            <!-- 📹 CAMBIAR: Reemplaza el ID de YouTube "Xn5UyW5dgxg" por el de tu video -->
+            <iframe
+                src="https://www.youtube.com/embed/Xn5UyW5dgxg"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
+</section>
+<!-- FIN sección VIDEO -->
+<!-- ⚠ FIX: La sección #galeria estaba anidada DENTRO de #video, ahora está correctamente separada -->
+
+
+<!-- ====================================================
+     GALERÍA — Cuadrícula de imágenes decorativas
+==================================================== -->
+<section id="galeria" class="section">
+
+    <!-- ✏ CAMBIAR: Título de la galería -->
+    <h2>Nuestra Galería</h2>
+
+    <div class="galeria-grid">
+
+        <!-- 🔁 CAMBIAR: Reemplaza cada "galeriaX.jpeg" por tus imágenes reales -->
+        <div class="galeria-item">
+            <img src="imagen/galeria1.jpeg" alt="Galería imagen 1">
+        </div>
+        <div class="galeria-item">
+            <img src="imagen/galeria2.jpeg" alt="Galería imagen 2">
+        </div>
+        <div class="galeria-item">
+            <img src="imagen/galeria3.jpeg" alt="Galería imagen 3">
+        </div>
+        <div class="galeria-item">
+            <img src="imagen/galeria4.jpeg" alt="Galería imagen 4">
+        </div>
+        <div class="galeria-item">
+            <img src="imagen/galeria5.jpeg" alt="Galería imagen 5">
+        </div>
+        <div class="galeria-item">
+            <img src="imagen/galeria6.jpeg" alt="Galería imagen 6">
+        </div>
+
+    </div>
+</section>
+<!-- FIN sección GALERÍA -->
+
+
+<!-- ====================================================
+     TESTIMONIOS — Comentarios de clientes
+==================================================== -->
+<section class="comentarios">
+
+    <!-- ✏ CAMBIAR: Título de la sección de testimonios -->
+    <h2>Lo que dicen nuestros clientes</h2>
+
+    <div class="comentarios-container">
+
+        <!-- ✏ CAMBIAR: Edita o agrega testimonios aquí -->
+        <div class="comentario">
+            <p>"Disfrutar una fruta deshidratada Hap's es conectarse con lo auténtico, con un sabor limpio, natural y una textura que resalta lo mejor de cada fruto sin necesidad de añadidos."</p>
+            <h4>— María Gómez</h4>
+        </div>
+
+        <div class="comentario">
+            <p>"La calidad de la fruta se percibe desde el primer instante, ofreciendo un equilibrio perfecto entre sabor y frescura, como si estuvieras probando la fruta recién cosechada."</p>
+            <h4>— Carlos Rodríguez</h4>
+        </div>
+
+        <div class="comentario">
+            <p>"Probar una fruta deshidratada de Hap's es una experiencia muy natural. Conserva sus sabores originales sin alteraciones y, al masticarla, libera una sensación jugosa en el paladar. Una forma auténtica de disfrutar la fruta en su estado más puro."</p>
+            <h4>— Kleidy Cadena</h4>
+        </div>
+
+    </div>
+</section>
+<!-- FIN sección TESTIMONIOS -->
+
+
+<!-- ====================================================
+     CONTACTO — Datos de contacto y redes sociales
+==================================================== -->
+<section id="contacto-haps">
+    <div class="contacto-box">
+
+        <h2>Contáctanos</h2>
+
+        <!-- ✏ CAMBIAR: Número de WhatsApp y correo electrónico -->
+        <p><strong>WhatsApp:</strong> 573222297535</p>
+        <p><strong>Correo:</strong> hapscontacto@gmail.com</p>
+
+        <!-- 🔗 CAMBIAR: Reemplaza el número en el enlace de WhatsApp si cambia -->
+        <a href="https://wa.me/573222297535" target="_blank" class="btn-whatsapp">
+            Escríbenos por WhatsApp
+        </a>
+
+        <!-- REDES SOCIALES -->
+        <div class="social-media">
+
+            <!-- 🔗 CAMBIAR: URL de Instagram -->
+            <a href="https://www.instagram.com/haap.ss?igsh=NXBjMmUxZzE2MXBr" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <!-- 🔗 CAMBIAR: URL de TikTok -->
+            <a href="https://www.tiktok.com/@sachicahaps?_r=1&_t=ZS-94PaBxeZYqg" target="_blank" aria-label="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+
+            <!-- 🔗 CAMBIAR: URL de Facebook -->
+            <a href="https://www.facebook.com/profile.php?id=100075779474157&mibextid=ZbWKwL" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+        </div>
+
+    </div>
+</section>
+<!-- FIN sección CONTACTO -->
+
+
+<!-- ====================================================
+     MAPA — Ubicación en Google Maps
+==================================================== -->
+<section id="ubicacion" class="map-section">
+
+    <h2>Encuéntranos Aquí</h2>
+
+    <div class="map-container">
+        <!-- 🔗 CAMBIAR: Reemplaza las coordenadas (5.583059,-73.542575) por tu ubicación real si cambia -->
+        <iframe
+            src="https://www.google.com/maps?q=5.583059,-73.542575&hl=es&z=16&output=embed"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            title="Ubicación HAPS Deshidratados">
+        </iframe>
+    </div>
+
+</section>
+<!-- FIN sección MAPA -->
+
+
+<!-- ====================================================
+     FOOTER — Pie de página
+==================================================== -->
+<footer>
+    <div class="container footer-content">
+
+        <div>
+            <!-- ✏ CAMBIAR: Nombre y descripción de la marca en el footer -->
+            <h3>HAPS <span class="highlight">DESHIDRATADOS</span></h3>
+            <!-- ⚠ NOTA: Estaba escrito "DESIDRTADOS" (con falta ortográfica), ya corregido -->
+            <p>HAPS Deshidratados bajo el sol es un proyecto enfocado en ofrecer productos naturales de la mejor calidad, aprovechando el poder del sol para conservar su sabor y nutrientes. 🌞🍎✨</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <!-- ✏ CAMBIAR: Año y nombre en el copyright si es necesario -->
+        <p>© 2026 HAPS DESHIDRATADOS. Todos los derechos reservados.</p>
+    </div>
+</footer>
+<!-- FIN FOOTER -->
+
+
+<!-- ====================================================
+     BOTÓN FLOTANTE DE WHATSAPP
+==================================================== -->
+<!-- 🔗 CAMBIAR: Número de WhatsApp si cambia -->
+<a href="https://wa.me/573222297535" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>
