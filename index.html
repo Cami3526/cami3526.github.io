@@ -18,29 +18,43 @@
 
 <body>
 <!-- ====================================================
-     HEADER — Barra de navegación superior con Hamburguesa
+     HEADER — Barra de navegación con 3 Logos (HAPS, SENA/Fondo Emprendedor y Alcaldía de Sáchica)
 ==================================================== -->
 <header id="header">
-    <div class="container nav-container">
+    <div class="container nav-container" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0;">
 
-        <!-- LOGO + NOMBRE DE MARCA -->
-        <div class="brand">
-            <div class="logo">
-                <img src="imagen/logo.jpeg" alt="HAPS Logo">
+        <!-- CONTENEDOR DE LOGOS Y MARCA -->
+        <div class="brand" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            
+            <!-- Logo 1: HAPS -->
+            <div class="logo" style="width: 42px; height: 42px;">
+                <img src="imagen/logo.jpeg" alt="HAPS Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 6px;">
             </div>
-            <div class="logo-text">
+
+            <!-- Logo 2: SENA y Fondo Emprendedor (Formato horizontal) -->
+            <div class="logo-sena" style="height: 38px;">
+                <img src="imagen/fondo.jpeg" alt="SENA Fondo Emprendedor" style="height: 100%; width: auto; object-fit: contain;">
+            </div>
+
+            <!-- Logo 3: Alcaldía de Sáchica (Formato circular) -->
+            <div class="logo-alcaldia" style="width: 40px; height: 40px;">
+                <img src="imagen/alcaldia.jpeg" alt="Alcaldía de Sáchica" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+            </div>
+
+            <!-- NOMBRE DE MARCA -->
+            <div class="logo-text" style="font-weight: bold; font-size: 16px;">
                 HAPS <span class="highlight">DESHIDRATADOS</span>
             </div>
         </div>
 
-        <!-- BOTÓN HAMBURGUESA (Visible solo en móviles) -->
-        <div class="menu-toggle" id="mobile-menu">
+        <!-- BOTÓN HAMBURGUESA (Visible solo en móviles - ID original intacto) -->
+        <div class="menu-toggle" id="mobile-menu" style="cursor: pointer; font-size: 22px;">
             <i class="fa-solid fa-bars"></i>
         </div>
 
         <!-- MENÚ DE NAVEGACIÓN -->
         <nav class="nav-menu">
-            <ul>
+            <ul style="display: flex; list-style: none; gap: 20px; margin: 0; align-items: center;">
                 <li><a href="index.html#inicio">Inicio</a></li>
                 <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                 <li><a href="index.html#productos">Productos</a></li>
@@ -94,91 +108,204 @@
     </div>
 </section>
 
-
-<!-- ====================================================
-     PRODUCTOS — Catálogo de productos con galería
-==================================================== -->
+<!-- ================= PRODUCTOS ================= -->
 <section id="productos" class="section">
     <div class="container">
 
-        <!-- ✏ CAMBIAR: Título de la sección de productos -->
         <h2 class="section-title">Nuestros Productos</h2>
-
-        <!-- ✏ CAMBIAR: Descripción debajo del título -->
         <p class="section-subtitle">
             Frutas y verduras seleccionadas y deshidratadas cuidadosamente.
         </p>
 
-        <!-- FILA 1: Primeros 3 productos -->
-        <div class="gallery-grid">
+        <!-- Contenedor general en Grid para las fichas -->
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
 
-            <!-- 🔁 PRODUCTO 1: Tomate -->
-            <div class="gallery-item">
-                <img src="imagen/tomate.jpeg" alt="Tomate deshidratado">
-                <div class="overlay">
-                    <h4>Tomate Deshidratado</h4>
-                    <p>Tomate deshidratado: más sabor, más nutrientes y mayor duración en un solo ingrediente. 🍅✨</p>
+            <!-- PRODUCTO 1: Tomate -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/tomate.jpeg" alt="Tomate deshidratado" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Tomate deshidratado</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Tomate deshidratado: más sabor, más nutrientes y mayor duración en un solo ingrediente.🍅✨</p>
+                    
+                    <!-- Botones de gramos -->
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Tomate deshidratado', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Tomate deshidratado', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Tomate deshidratado', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Tomate deshidratado')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
                 </div>
             </div>
 
-            <!-- 🔁 PRODUCTO 2: Mix de fruta -->
-            <div class="gallery-item">
-                <img src="imagen/mix de fruta.jpeg" alt="Mix de fruta deshidratada">
-                <div class="overlay">
-                    <h4>Mix de Fruta Deshidratado</h4>
-                    <p>Salpicón deshidratado: el sabor natural de la fruta, práctico y listo para disfrutar en cualquier momento. 🍍🍎✨</p>
+            <!-- PRODUCTO 2: Mix de Fruta -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/mix de fruta.jpeg" alt="Mix de fruta Deshidratado" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Mix de fruta Deshidratado</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Salpicón deshidratado: el sabor natural de la fruta, práctico y listo para disfrutar en cualquier momento.🍍🍎✨</p>
+                    
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mix de fruta Deshidratado', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mix de fruta Deshidratado', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mix de fruta Deshidratado', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Mix de fruta Deshidratado')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
                 </div>
             </div>
 
-            <!-- 🔁 PRODUCTO 3: Piña -->
-            <div class="gallery-item">
-                <img src="imagen/piña.jpeg" alt="Piña deshidratada">
-                <div class="overlay">
-                    <h4>Piña Deshidratada</h4>
-                    <p>Piña: dulzura natural y energía tropical en cada bocado. 🍍✨</p>
+            <!-- PRODUCTO 3: Piña -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/piña.jpeg" alt="Piña Deshidratada" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Piña Deshidratada</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Piña: dulzura natural y energía tropical en cada bocado. 🍍✨</p>
+                    
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Piña Deshidratada', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Piña Deshidratada', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Piña Deshidratada', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Piña Deshidratada')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 4: Papaya -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/papaya.jpeg" alt="Papaya deshidratada" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Papaya deshidratada</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Papaya deshidratada: dulzura natural, sabor tropical y energía en cada bocado. 🧡✨</p>
+                    
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Papaya deshidratada', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Papaya deshidratada', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Papaya deshidratada', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Papaya deshidratada')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 5: Mango -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/mango.jpeg" alt="Mango Deshidratado" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Mango Deshidratado</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Mango deshidratado: tropical, dulce y perfecto para un snack saludable. 🥭🌞</p>
+                    
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mango Deshidratado', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mango Deshidratado', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Mango Deshidratado', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Mango Deshidratado')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 6: Cebolla -->
+            <div class="product-card" style="background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column;">
+                <div style="position: relative;">
+                    <img src="imagen/cebolla.png" alt="Cebolla Deshidratada" style="width: 100%; height: 200px; object-fit: cover;">
+                    <span style="position: absolute; top: 12px; right: 12px; background: #198754; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">Hasta 1000 g</span>
+                </div>
+                <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 20px; margin-bottom: 8px; color: #333;">Cebolla Deshidratada</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;">Cebolla deshidratada: sabor intenso y practicidad en cada uso. 🧅✨</p>
+                    
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Cebolla Deshidratada', '250 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">250 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Cebolla Deshidratada', '500 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">500 g</button>
+                        <button type="button" class="gram-btn" onclick="seleccionarGramos(this, 'Cebolla Deshidratada', '1000 g')" style="padding: 6px 12px; border: 1px solid #b6d4fe; background: #f8f9fa; border-radius: 20px; font-size: 13px; cursor: pointer;">1000 g</button>
+                    </div>
+
+                    <button onclick="abrirModal('Cebolla Deshidratada')" style="background: #198754; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;">
+                        💬 Haz tu pedido
+                    </button>
                 </div>
             </div>
 
         </div>
-        <!-- FIN gallery-grid -->
-
-        <!-- FILA 2: Productos adicionales -->
-        <!-- ⚠ FIX: Esta segunda fila estaba fuera del <div class="container">, ahora correctamente dentro -->
-        <div class="gallery-grid">
-
-            <!-- 🔁 PRODUCTO 4: Papaya -->
-            <div class="gallery-item">
-                <img src="imagen/papaya.jpeg" alt="Papaya deshidratada">
-                <div class="overlay">
-                    <h4>Papaya Deshidratada</h4>
-                    <p>Papaya deshidratada: dulzura natural, sabor tropical y energía en cada bocado. 🧡✨</p>
-                </div>
-            </div>
-
-            <!-- 🔁 PRODUCTO 5: Mango -->
-            <div class="gallery-item">
-                <img src="imagen/mango.jpeg" alt="Mango deshidratado">
-                <div class="overlay">
-                    <h4>Mango Deshidratado</h4>
-                    <p>Mango deshidratado: tropical, dulce y perfecto para un snack saludable. 🥭🌞</p>
-                </div>
-            </div>
-
-            <!-- 🔁 PRODUCTO 6: Cebolla — CAMBIAR imagen "producto6.jpg" por la real -->
-            <div class="gallery-item">
-                <img src="imagen/cebolla.png" alt="Cebolla deshidratada">
-                <div class="overlay">
-                    <h4>Cebolla Deshidratada</h4>
-                    <p>Cebolla deshidratada: sabor intenso y practicidad en cada uso. 🧅✨</p>
-                </div>
-            </div>
-
-        </div>
-        <!-- FIN segunda gallery-grid -->
-
     </div>
 </section>
-<!-- FIN sección PRODUCTOS -->
+
+<!-- ================= VENTANA MODAL (POPUP) ================= -->
+<div id="modalPedido" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+    <div style="background: white; width: 90%; max-width: 450px; border-radius: 16px; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.2);">
+        
+        <!-- Cabecera del Modal -->
+        <div style="background: #198754; color: white; padding: 20px; position: relative;">
+            <h3 style="margin: 0; font-size: 22px;">Realizar Pedido</h3>
+            <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.9;">Completa los datos y te contactamos</p>
+            <button onclick="cerrarModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: white; font-size: 20px; cursor: pointer;">✕</button>
+        </div>
+
+        <!-- Cuerpo del Formulario -->
+        <div style="padding: 20px;">
+            <form id="formWhatsApp" onsubmit="enviarWhatsApp(event)">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px;">TU NOMBRE COMPLETO</label>
+                    <input type="text" id="nombreCliente" placeholder="Ej: María Rodríguez" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px;">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="correoCliente" placeholder="correo@ejemplo.com" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px;">PRODUCTO SELECCIONADO</label>
+                    <input type="text" id="productoModal" readonly style="width: 100%; padding: 10px; border: 1px solid #ccc; background: #f8f9fa; border-radius: 8px; font-size: 14px; color: #333; font-weight: bold;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px;">GRAMOS QUE DESEAS PEDIR</label>
+                    <input type="text" id="gramosModal" placeholder="Ej: 500" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                </div>
+
+                <!-- NUEVO CAMPO: UBICACIÓN DE ENVÍO -->
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-size: 12px; font-weight: bold; color: #444; margin-bottom: 5px;">UBICACIÓN / DIRECCIÓN DE ENVÍO</label>
+                    <input type="text" id="ubicacionCliente" placeholder="Ej: Calle 5 # 10-20, Barrio o Vereda" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                </div>
+
+                <p style="font-size: 11px; color: #666; text-align: center; margin-bottom: 15px;">Al dar clic en <strong>Enviar</strong> abriremos WhatsApp con tu pedido listo para enviar.</p>
+
+                <button type="submit" style="background: #25D366; color: white; border: none; border-radius: 10px; padding: 12px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px;">
+                    💬 Enviar por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <!-- ====================================================
@@ -317,11 +444,11 @@
         <h2>Contáctanos</h2>
 
         <!-- ✏ CAMBIAR: Número de WhatsApp y correo electrónico -->
-        <p><strong>WhatsApp:</strong> 573222297535</p>
-        <p><strong>Correo:</strong> hapscontacto@gmail.com</p>
+        <p><strong>WhatsApp:</strong> 573229613424</p>
+        <p><strong>Correo:</strong> hapsdelifruta@gmail.com</p>
 
         <!-- 🔗 CAMBIAR: Reemplaza el número en el enlace de WhatsApp si cambia -->
-        <a href="https://wa.me/573222297535" target="_blank" class="btn-whatsapp">
+        <a href="https://wa.me/573229613424" target="_blank" class="btn-whatsapp">
             Escríbenos por WhatsApp
         </a>
 
@@ -401,9 +528,55 @@
      BOTÓN FLOTANTE DE WHATSAPP
 ==================================================== -->
 <!-- 🔗 CAMBIAR: Número de WhatsApp si cambia -->
-<a href="https://wa.me/573222297535" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+<a href="https://wa.me/573229613424" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
+<<script>
+    function seleccionarGramos(button, nombreProducto, gramos) {
+        const card = button.closest('.product-card');
+        card.querySelectorAll('.gram-btn').forEach(btn => {
+            btn.style.background = '#f8f9fa';
+            btn.style.color = '#000';
+            btn.style.borderColor = '#b6d4fe';
+        });
 
+        button.style.background = '#0d6efd';
+        button.style.color = '#white';
+        button.style.borderColor = '#0d6efd';
+
+        card.dataset.gramosSeleccionados = gramos;
+        
+        // Opcional: autocompletar el input del modal si se hace clic en el botón de gramos
+        const inputGramos = document.getElementById('gramosModal');
+        if(inputGramos) inputGramos.value = gramos;
+    }
+
+    function abrirModal(nombreProducto) {
+        document.getElementById('productoModal').value = nombreProducto;
+        document.getElementById('modalPedido').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+        document.getElementById('modalPedido').style.display = 'none';
+    }
+
+    function enviarWhatsApp(event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById('nombreCliente').value;
+        const correo = document.getElementById('correoCliente').value;
+        const producto = document.getElementById('productoModal').value;
+        const gramos = document.getElementById('gramosModal').value;
+        const ubicacion = document.getElementById('ubicacionCliente').value; // Capturamos la ubicación
+
+        const telefono = '573229613424'; // Número configurado
+
+        // Mensaje adaptado incluyendo la ubicación del cliente
+        const mensaje = `Hola, quiero hacer un pedido:%0A%0A*Nombre:* ${nombre}%0A*Correo:* ${correo}%0A*Producto:* ${producto}%0A*Cantidad/Gramos:* ${gramos}%0A*Ubicación de envío:* ${ubicacion}`;
+
+        window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+        cerrarModal();
+    }
+</script>
 </body>
 </html>
